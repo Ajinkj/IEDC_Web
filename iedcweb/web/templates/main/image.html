@@ -1,0 +1,101 @@
+{% extends "main/iedc.html" %}
+{% load static %}
+{% block content %}
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					<a href="{% url 'iedc' %} "><h1>IEDC-JECC</h1></a>
+						
+						
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img  src="{{ image.photo.url }}" alt="" /></span>
+								<h1>{{ image.photo_name }}</h1>
+								{% if image.photo_Desc %}
+								<p> <b>{{ image.photo_Desc }} </b></p>
+								{% endif %}
+							
+							</section>
+
+
+							<section id="second" class="main special">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<a href="{% url 'iedc' %}" class="button primary"><b>Home</b></a>
+											<a href="{% url 'gallery' %}" class="button primary"><b>Gallery</b></a>
+										</header>
+									</div>
+								</div>
+								</section>
+								<section id="second" class="main special">
+							<div class="spotlight">
+									<div class="content">
+
+							<header class="major" id="header">
+						<h1><b>Photo Gallery</h1>
+						</div>
+						</div>
+						
+					</header>
+							
+
+							<div class="box alt">
+											<div class="row gtr-uniform">
+												<!-- for loop start here -->
+												{% if iedcinfo.photos.all %}
+                                                 
+                                               
+                                                  {% for photo in iedcinfo.photos.all %}
+                                                   <div class="col-4"><span class="image fit"><a href="{% url 'image' photo.id %}" ><img src="{{ photo.photo.url }}" alt="" /></a></span></div>
+                                                  {% endfor %}
+                                                    
+                                                        {% endif %}
+												{% comment %} <div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_2.url }}" alt="" /></span></div>
+												
+												{% if iedcinfo.Photo_3 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_3.url }}" alt="" /></span></div>
+												{% endif %}
+												{% if iedcinfo.Photo_4 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_4.url }}" alt="" /></span></div>
+												{% endif %}
+												{% if iedcinfo.Photo_5 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_5.url }}" alt="" /></span></div>
+												{% endif %}
+												{% if iedcinfo.Photo_6 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_6.url }}" alt="" /></span></div>
+												{% endif %}
+												{% if iedcinfo.Photo_7 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_7.url }}" alt="" /></span></div>
+												{% endif %}
+												{% if iedcinfo.Photo_8 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_8.url }}" alt="" /></span></div>
+												{% endif %}
+												{% if iedcinfo.Photo_9 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_9.url }}" alt="" /></span></div>
+												{% endif %}
+												{% if iedcinfo.Photo_10 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_10.url }}" alt="" /></span></div>
+												{% endif %}
+												{% if iedcinfo.Photo_11 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_11.url }}" alt="" /></span></div>
+												{% endif %}
+												{% if iedcinfo.Photo_12 %}
+												<div class="col-4"><span class="image fit"><img src="{{ iedcinfo.Photo_12.url }}" alt="" /></span></div>
+												{% endif %} {% endcomment %}
+											</div>
+										</div>
+					</div>
+					</div>
+								</div>
+								</section>
+
+				{% endblock content %}

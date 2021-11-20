@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>IEDC-JECC</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'main/assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'main/assets/css/noscript.css' %}" /></noscript>
+	</head>
+
+	<body class="is-preload">
+	{% block content %}
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="{% static 'main/images/logo.svg' %}" alt="" /></span>
+						<h1><b>IEDC-JECC</b></h1>
+						<p><b>ENTREPRENEURSHIP DEVELOPMENT CELL<br />Jyothi Engineering College</b><br>
+						
+						<ul class="icons">
+								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+							<h2>#Think...     #Explore...     #Create...</h2>
+						</p>
+					
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active"><b>Introduction</a></li>
+							<li><a href="#first">Milestone</a></li>
+							<li><a href="#second">Event's</a></li>
+							<li><a href="{% url 'gallery' %} ">Gallery</a></li>
+							<li><a href="#cta">Contact Us</b></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+										{% for info in iedcinfo.all%}
+											<h2><b>{{ info.IEDC_Title }} </b></h2>
+										</header>
+										<p><b>{{ info.IEDC_Short_Desc }} </b></p>
+										<ul class="actions">
+											<li><a href="{% url 'detail'  %}" class="button primary"><b>Learn More</b></a></li>
+										</ul>
+									</div>
+									<span class="image"><img src="{{ info.IEDC_photo.url }}" alt="" /></span>
+								</div>
+							</section>
+							{% endfor %}
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+								
+									<b><h2>Milestone</h2>
+								</header>
+								<ul class="features">
+								{% for data in milestone.all %}
+									<li>
+										<span class="icon solid major style1 fa-crown"></span>
+										<h3>{{ data.Title }}</h3>
+										<p>{{ data.Description }}</p>
+									</li>
+									{% endfor %}
+								</ul>
+								</b>
+								
+								
+							</section>
+
+							<section id="second" class="main special">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2><b>Event's of IEDC-JECC</b></h2>
+										</header>
+									</div>
+								</div>
+								</section>
+
+
+									<!-- for loop event repeatation start here -->
+									{% if events.all %}
+									
+									{% for event in events.all %}
+									
+									{% if event.id >= count %}
+								
+									
+									
+							<section id="second" class="main special">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2><b>{{ event.Event_name }}</b></h2>
+										</header>
+										<p><b>{{ event.Event_short_Desc }}</b></p>
+										<ul class="features">
+											<li><a href="{% url 'event' event.id %}" class="button"><b>know More</b></a></li>
+										</ul>
+									</div>
+									
+									<span class="image"><img src="{{ event.Event_photo.url }}" alt="" /></span>
+								</div>
+								
+							</section>	
+							{% endif %}
+							{% endfor %}
+							{% endif %}
+							<!-- for loop for events end here -->
+
+							
+
+							<section id="second" class="main special">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<a href="{% url 'events' %}" class="button primary"><b>All Event's</b></a>
+											<a href="{% url 'gallery' %}" class="button primary"><b>Gallery</b></a>
+										</header>
+									</div>
+								</div>
+								</section>
+								
+								
+
+						<!-- form -->
+							<section id="cta" class="main special">
+							<section>
+										<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2><b>Lets Connect</b></h2>
+										</header>
+										
+										<h3>Have an amazing idea, make your Idea come true.</h3>
+										<a href="#" class="button primary"><b>Send Message</b></a>
+
+										{% comment %} <form action="#cta" method='post'>
+										{% csrf_token %}
+										
+										{{ form }}
+										<h1> </h1>
+										<h2> {{ note }}</h2>
+
+										<input type="submit" value="Send Message">
+										</form> {% endcomment %}
+										{% comment %} <form method="post" action="#cta">
+										{% csrf_token %}
+											<div class="row gtr-uniform">
+												<div class="col-6 col-12-xsmall">
+												    <label for="name"><b><h3 align=left>Name</h3></b></label>
+													<b><input type="text" name="name" id="name" value="" placeholder="Name" /></b>
+												</div>
+												<div class="col-6 col-12-xsmall">
+												    <label for="email" ><b><h3 align=left>E-mail</h3></b></email>
+													<input type="email" name="email" id="email" value="" placeholder="Email" />
+												</div>
+												
+												
+												<div class="col-12">
+												    <label for="message"><b><h3 align=left>Enter your Message</h3></b></label>
+													<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+												</div>
+												<div class="col-12">
+													<ul class="actions">
+														<li><input type="submit" value="Send Message" class="primary" /></li>
+														<li><input type="reset" value="Reset" /></li>
+													</ul>
+												</div>
+											</div>
+										</form> {% endcomment %}
+									</section>
+							</section>
+
+					</div>
+{% endblock content %}
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<b><h2>IEDC-JECC</h2>
+							<p>Entrepreneurship Development Cell of Jyothi Engineering College,
+										 started in 2009 has now reached another milestone with many interested students
+										  working hard to bring life to ideas. IEDC, Jyothi strives to bring up new ideas which
+										   has the potential to make the world a better place.</p></b>
+							<ul class="actions">
+								<li><a href="{% url 'detail'  %}" class="button"><b>Learn More</b></a></li>
+							</ul>
+						</section>
+						<section>
+							<b><h2>IEDC@JECC</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>Jyothi Engineering College, Thrissur, Cheruthurithy, pin: 678967</dd>
+								<dt>Phone</dt>
+								<dd>(+91) 7592039012</dd>
+								<dt>Email</dt>
+								<dd><a href="mailto:iedc@jecc.ac.in">iedc@jecc.ac.in</a></dd>
+								</b>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright"><b>&copy; Designed by: </b><a href="https://ajinkj.me"><b> AJIN K J</b></a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'main/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'main/assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'main/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'main/assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'main/assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'main/assets/js/util.js' %}"></script>
+			<script src="{% static 'main/assets/js/main.js' %}"></script>
+
+	</body>
+</html>

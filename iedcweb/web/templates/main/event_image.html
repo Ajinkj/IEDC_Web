@@ -1,0 +1,43 @@
+{% extends "main/iedc.html" %}
+{% load static %}
+{% block content %}
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					<a href="{% url 'iedc' %} "><h1>IEDC-JECC</h1></a>
+						
+						
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<span class="image main"><img  src="{{ image.photo.url }}" alt="" /></span>
+								<h1>{{ image.photo_name }}</h1>
+								<p> <b>{{ image.photo_Desc }} </b></p>
+							
+							</section>
+
+
+							<section id="second" class="main special">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<a href="{% url 'iedc' %}" class="button primary"><b>Home</b></a>
+											
+										</header>
+									</div>
+								</div>
+								</section>
+								
+					</div>
+					</div>
+								</div>
+								
+
+				{% endblock content %}
